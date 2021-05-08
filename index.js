@@ -51,14 +51,14 @@ const generalConfig = {
 
 module.exports = function(config = generalConfig , type = 'normal') {
 
-    const isNormal = !!((argv.type && argv.type == 'normal') || argv.normal);
-    const isTemplating = !!((argv.type && argv.type == 'templating') || argv.templating);
+    const isNormal = !!((argv.type && argv.type == 'normal') || argv.normal || type == 'normal');
+    const isTemplating = !!((argv.type && argv.type == 'templating') || argv.templating || type == 'templating');
 
     if (isNormal) {
-        require(path.resolve(__dirname, './webpack/webpack.config.js'))(config);
+        require('./webpack/webpack.config.js')(config);
     }
     
     if (isTemplating) {
-        require(path.resolve(__dirname, './webpack/templating.config.js'))(config);
+        require('./webpack/templating.config.js')(config);
     }
 }
