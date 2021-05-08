@@ -1,0 +1,44 @@
+{
+    "root": true,
+    "extends": [ "eslint:recommended", "prettier" ],
+    "globals": {
+      "jQuery": false,
+      "tinyMCE": false,
+      "Backbone": false,
+      "wp": true,
+      "_": false
+    },
+    "env": {
+      "node": true,
+      "es6": true,
+      "amd": true,
+      "browser": true,
+      "jquery": true
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "globalReturn": true,
+        "generators": false,
+        "objectLiteralDuplicateProperties": false
+      },
+      "ecmaVersion": 2018,
+      "sourceType": "module",
+      "allowImportExportEverywhere": true
+    },
+    "plugins": [
+      "import"
+    ],
+    "settings": {
+      "import/core-modules": [],
+      "import/ignore": [
+        "node_modules",
+        "\\.(coffee|scss|css|less|hbs|svg|json)$"
+      ]
+    },
+    "rules": {
+      "no-console": 0,
+      "yoda": [ 2, "never" ]
+    }
+  }
+  
