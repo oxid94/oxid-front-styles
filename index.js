@@ -55,10 +55,10 @@ module.exports = function(config = generalConfig , type = 'normal') {
     const isTemplating = !!((argv.type && argv.type == 'templating') || argv.templating);
 
     if (isNormal) {
-        require('./webpack/webpack.config.js')(config);
+        require(path.resolve(__dirname, './webpack/webpack.config.js'))(config);
     }
     
     if (isTemplating) {
-        require('./webpack/templating.config.js')(config);
+        require(path.resolve(__dirname, './webpack/templating.config.js'))(config);
     }
 }
