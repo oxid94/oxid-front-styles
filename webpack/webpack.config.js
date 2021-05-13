@@ -121,7 +121,7 @@ module.exports = function(webpackConf) {
     
             new StyleLintPlugin({
                 configFile: path.resolve(__dirname, 'config/.stylelintrc'),
-                files: webpackConf.scss.lint.path,
+                files: webpackConf.scss.path,
                 syntax: 'scss',
                 failOnError: false,
                 quiet: false

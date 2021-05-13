@@ -6,6 +6,13 @@
     "no-duplicate-selectors": null,
     "no-empty-source": null,
     "indentation": 2,
+    "string-quotes": "single",
+    "function-comma-space-after": "always-single-line",
+    "selector-list-comma-space-after": "always-single-line",
+    "declaration-block-trailing-semicolon": "always",
+    "block-closing-brace-newline-after": "always",
+    "selector-attribute-quotes": "always",
+    "declaration-block-semicolon-newline-after": "always",
     "max-line-length": [
       120,
       {

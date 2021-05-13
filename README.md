@@ -1,56 +1,78 @@
 # Oxid Front Styles
 
-El paquete esta basado en la tecnologia Webpack, y esta configurado para tener 2 opciones:
-1.- La compilación de assets CSS y JS
-El CSS se compila mediante SCSS
-El JS se compila con ES6
-2.- La generación de maquetas planas, utilizando lo nombrado anteriormente y el HTML se compila con Twig.
+The package is based on Webpack technology and is used to compile assets
 
 ## Installation
 
-Es necesario instalar por terminal el paquete de npm
+It is necessary to install the npm package by terminal
 ```sh
 npm i --save-dev git+https://github.com/oxid94/oxid-front-styles.git
 ```
 
-Al instalar dicho paquete, es recomendable copiar la configuración del starter-kit
+When installing this package, it is recommended to copy the configuration of the starter-kit
 ```sh
-cp node_modules/oxid-front-styles/starter-kit/[drupal | wordpress | templating].config.js webpack.config.js
+cp node_modules/oxid-front-styles/starter-kit/normal.js index.js
 ```
 
-Una copiado este fichero en la raiz del proyecto, es necesario reemplazar cada una de las lineas que aparecen a continuación, adaptandolas al proyecto correspondiente.
+Once this file has been copied to the root of the project, it is necessary to replace each of the lines that appear below, adapting them to the corresponding project.
 
 ```sh
 const generalConfig = {
     entry: {
-        'main': './src/assets/scripts/main.js',
-        'style': './src/assets/scss/style.scss',
+        'main': path.resolve(__dirname, 'source/assets/scripts/main.js'),
     },
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: '/dist/',
+        path: path.resolve(__dirname, './dist'),
+        publicPath: 'http://localhost:3000/dist/',
         filename: 'js/[name].js'
     },
     scss: {
         lint: {
-            path: 'src/assets/scss/**/*.scss'
+            path: path.resolve(__dirname, '/source/assets/scss/**/*.scss'),
         }
     },
     img: {
-        from: path.join(__dirname, '/src/assets/img/'),
-        to: path.join(__dirname, '/dist/img')
+        from: path.join(__dirname, 'source/assets/img/'),
+        to: path.join(__dirname, 'dist/img')
     },
-    browsersSync: [
-        {
-            host: 'localhost',
-            port: 3000,
-            server: {
-                baseDir: path.resolve(__dirname, 'dist')
-            },
-            proxy: 'http://localhost:3000/'
-        }, {
-            reload: false
-        }
-    ],
+    browsersSync: {
+        host: 'localhost',
+        port: 3000,
+        open: false,
+        server: {
+            baseDir: ['./dist']
+        },
+        files: ['./dist/*']
+    },
 }
 ```
+> Note: 
+> `entry` here goes all the files to compile (SCSS and JS), you can import SCSS files inside JS
+> `output > path` the destination path of compiled files
+> `output > filename` the configuration of the path and names of JS files
+> `scss > path` the path to lintern all scss files
+> `img > from` the path of original images
+> `img > to` the destination path of compresed images
+> `browsersSync` requires a configuration object of [browsersSync]
+
+
+
+
+
+It is necessary to include these 2 lines in the package.json of your project in order to compile
+```sh
+[…]
+"scripts": {
+    […]
+    "build": "webpack --env=development --progress --config index.js",
+    "build:prod": "webpack --env=production --progress --config index.js",
+    […]
+},
+[…]
+```
+> Note: 
+> `npm run build` have a watch files system
+> `npm run build:prod` have a minifyed files system and don't watch files
+
+
+[browsersSync]: https://browsersync.io/
