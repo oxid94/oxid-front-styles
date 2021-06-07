@@ -27,9 +27,7 @@ const generalConfig = {
         filename: 'js/[name].js'
     },
     scss: {
-        lint: {
-            path: path.resolve(__dirname, '/source/assets/scss/**/*.scss'),
-        }
+        path: path.resolve(__dirname, '/source/assets/scss/**/*.scss'),
     },
     img: {
         from: path.join(__dirname, 'source/assets/img/'),
