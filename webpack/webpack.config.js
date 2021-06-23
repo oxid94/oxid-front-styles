@@ -92,6 +92,21 @@ module.exports = function(webpackConf) {
                         }
                     ]
                 },
+                { 
+                    test: /\.(png|jpg|gif)$/,
+                    use: [
+                        {
+                            loader: 'file-loader',
+                            options: {
+                                name: '[path][name].[ext]',
+                                context: webpackConf.img.context,
+                                outputPath: webpackConf.img.outputPath,
+                                publicPath: webpackConf.img.publicPath,
+                                useRelativePaths: true
+                            }
+                        }
+                    ] 
+                },
                 {
                     test: /\.(sa|sc|c)ss$/,
                     use: [

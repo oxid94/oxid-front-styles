@@ -31,7 +31,10 @@ const generalConfig = {
     },
     img: {
         from: path.join(__dirname, 'source/assets/img/'),
-        to: path.join(__dirname, 'dist/img')
+        to: path.join(__dirname, 'dist/img'),
+        context: 'source/assets/',
+        outputPath: '/dist',
+        publicPath: '/dist',
     },
     browsersSync: {
         host: 'localhost',
