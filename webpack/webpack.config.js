@@ -61,6 +61,7 @@ module.exports = function(webpackConf) {
                 {
                     enforce: 'pre',
                     test: /\.js$/,
+                    exclude: /node_modules/,
                     loader: 'eslint-loader',
                     options: {
                         configFile: path.resolve(__dirname, 'config/.eslintrc')
