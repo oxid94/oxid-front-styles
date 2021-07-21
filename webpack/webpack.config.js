@@ -169,7 +169,11 @@ module.exports = function(webpackConf) {
                         }]
                     }],
                 ],
-            }) : new ImageminPlugin(),
+            }) : new CopyPlugin({
+              patterns: [
+                { from: webpackConf.img.from, to: webpackConf.img.to },
+              ],
+            }),
     
             new FriendlyErrorsWebpackPlugin()
         ]
