@@ -149,7 +149,7 @@ module.exports = function(webpackConf) {
     
             new BrowserSyncPlugin(webpackConf.browsersSync),
     
-            new ImageminPlugin({
+            config.production ? new ImageminPlugin({
                 externalImages: {
                     context: webpackConf.img.from, // Important! This tells the plugin where to "base" the paths at
                     sources: glob.sync(path.resolve(webpackConf.img.from, '**/*')),
@@ -169,7 +169,7 @@ module.exports = function(webpackConf) {
                         }]
                     }],
                 ],
-            }),
+            }) : new ImageminPlugin(),
     
             new FriendlyErrorsWebpackPlugin()
         ]
