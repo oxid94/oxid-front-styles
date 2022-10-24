@@ -130,6 +130,13 @@ module.exports = function(webpackConf) {
                         { loader: 'sass-loader', options: { sassOptions: { sourceComments: true, sourceMap: config.production } } }
                     ]
                 },
+                {
+                  test: /\.(ttf|eot|woff|woff2)$/,
+                  loader: 'file-loader',
+                  options: {
+                    name: 'fonts/[name].[ext]'
+                  }
+                }
             ],
         },
         plugins: [
